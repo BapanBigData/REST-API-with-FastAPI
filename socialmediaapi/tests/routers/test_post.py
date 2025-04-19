@@ -84,7 +84,7 @@ async def test_get_comment_on_post_empty(
     assert response.json() == []
     
 
-@ pytest.mark.anyio
+@pytest.mark.anyio
 async def test_get_post_with_comments(
     async_client: AsyncClient, created_post: dict, created_comment: dict
 ):
@@ -97,7 +97,7 @@ async def test_get_post_with_comments(
     }
     
 
-@ pytest.mark.anyio
+@pytest.mark.anyio
 async def test_get_missing_post_with_comments(
     async_client: AsyncClient, created_post: dict, created_comment: dict
 ):
