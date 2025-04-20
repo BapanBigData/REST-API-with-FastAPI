@@ -9,7 +9,10 @@ class BaseConfig(BaseSettings):
     """Loads the dotenv file. Including this is necessary to get
     pydantic to load a .env file."""
     
-    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+    model_config = SettingsConfigDict(
+        env_file=".env", 
+        extra="ignore"
+    )
 
 
 class GlobalConfig(BaseConfig):
@@ -18,18 +21,24 @@ class GlobalConfig(BaseConfig):
 
 
 class DevConfig(GlobalConfig):
-    model_config = SettingsConfigDict(env_prefix="DEV_")
+    model_config = SettingsConfigDict(
+        env_prefix="DEV_"
+    )
 
 
 class ProdConfig(GlobalConfig):
-    model_config = SettingsConfigDict(env_prefix="PROD_")
+    model_config = SettingsConfigDict(
+        env_prefix="PROD_"
+    )
 
 
 class TestConfig(GlobalConfig):
     DATABASE_URL: str = "sqlite:///test.db"
     DB_FORCE_ROLL_BACK: bool = True
 
-    model_config = SettingsConfigDict(env_prefix="TEST_")
+    model_config = SettingsConfigDict(
+        env_prefix="TEST_"
+    )
 
 
 @lru_cache()
